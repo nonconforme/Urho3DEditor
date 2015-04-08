@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Core">
+      <UniqueIdentifier>{1140d8ce-b27c-4311-bcd8-aed7968bc976}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{22431f55-0fd0-41a2-b735-60a9b15fd695}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="States">
+      <UniqueIdentifier>{085fae47-2598-4859-a5a5-eb3cd8d080be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="States\Game">
+      <UniqueIdentifier>{fa479fe0-26a1-44f2-b68e-a6033b64ee2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="States\Editor">
+      <UniqueIdentifier>{efe5e5c8-99e4-496a-a53e-75d6a5976e8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="States\Loading">
+      <UniqueIdentifier>{870f2a21-c747-4a6b-876e-af817304a0fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="States\Menu">
+      <UniqueIdentifier>{325046cd-b366-4f63-8e8f-220c6020c93d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="States\Menu\SubStates">
+      <UniqueIdentifier>{b8cbe93d-aea4-45cf-b9b9-43f5a8726dc3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="States\Game\Components">
+      <UniqueIdentifier>{fc6e5b51-636d-4584-a2e2-213e5d56dd2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="States\Editor\Plugins">
+      <UniqueIdentifier>{8a1c10f8-9fc0-48b3-8fdf-5fd6c9062a47}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Common.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Root.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\StateManager.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\StateObject.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\StateEvents.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Loading\Loading.h">
+      <Filter>States\Loading</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Menu\Menu.h">
+      <Filter>States\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Menu\SubState.h">
+      <Filter>States\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Menu\SubStates\PlayGame.h">
+      <Filter>States\Menu\SubStates</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Menu\SubStates\Settings.h">
+      <Filter>States\Menu\SubStates</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Menu\SubStates\MainMenu.h">
+      <Filter>States\Menu\SubStates</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Game.h">
+      <Filter>States\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Events.h">
+      <Filter>States\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\DeathZone.h">
+      <Filter>States\Game\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\SpawnPoint.h">
+      <Filter>States\Game\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Player.h">
+      <Filter>States\Game\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Editor\EditorData.h">
+      <Filter>States\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Editor\EditorPlugin.h">
+      <Filter>States\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Editor\EditorSelection.h">
+      <Filter>States\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Editor\EditorView.h">
+      <Filter>States\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Editor\GizmoScene3D.h">
+      <Filter>States\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Editor\ResourceBrowser.h">
+      <Filter>States\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Editor\EPScene2D.h">
+      <Filter>States\Editor\Plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Editor\EPScene3D.h">
+      <Filter>States\Editor\Plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Editor\PluginScene3DEditor.h">
+      <Filter>States\Editor\Plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UI\AttributeVariable.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UI\AttributeVariableEvents.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UI\DirSelector.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UI\HierarchyWindow.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UI\MenuBarUI.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UI\MiniToolBarUI.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UI\ModalWindow.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UI\ResourcePicker.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UI\TabWindow.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UI\ToolBarUI.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UI\UIGlobals.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UI\UIUtils.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UI\AttributeContainer.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UI\AttributeInspector.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UI\Helpers.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UI\Macros.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\InputActionSystem.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Editor\EditorState.h">
+      <Filter>States\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Editor\TemplateManager.h">
+      <Filter>States\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Editor\EPGame.h">
+      <Filter>States\Editor\Plugins</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Root.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\StateManager.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\StateObject.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Loading\Loading.cpp">
+      <Filter>States\Loading</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Menu\SubState.cpp">
+      <Filter>States\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Menu\Menu.cpp">
+      <Filter>States\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Menu\SubStates\PlayGame.cpp">
+      <Filter>States\Menu\SubStates</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Menu\SubStates\Settings.cpp">
+      <Filter>States\Menu\SubStates</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Menu\SubStates\MainMenu.cpp">
+      <Filter>States\Menu\SubStates</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Game.cpp">
+      <Filter>States\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\DeathZone.cpp">
+      <Filter>States\Game\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\SpawnPoint.cpp">
+      <Filter>States\Game\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Player.cpp">
+      <Filter>States\Game\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Editor\EditorData.cpp">
+      <Filter>States\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Editor\EditorPlugin.cpp">
+      <Filter>States\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Editor\EditorSelection.cpp">
+      <Filter>States\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Editor\EditorView.cpp">
+      <Filter>States\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Editor\GizmoScene3D.cpp">
+      <Filter>States\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Editor\ResourceBrowser.cpp">
+      <Filter>States\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Editor\EPScene2D.cpp">
+      <Filter>States\Editor\Plugins</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Editor\EPScene3D.cpp">
+      <Filter>States\Editor\Plugins</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Editor\PluginScene3DEditor.cpp">
+      <Filter>States\Editor\Plugins</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UI\DirSelector.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UI\HierarchyWindow.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UI\MenuBarUI.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UI\MiniToolBarUI.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UI\ModalWindow.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UI\ResourcePicker.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UI\TabWindow.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UI\ToolBarUI.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UI\UIUtils.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UI\AttributeContainer.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UI\AttributeInspector.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UI\AttributeVariable.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\InputActionSystem.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Editor\EditorState.cpp">
+      <Filter>States\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Editor\EPGame.cpp">
+      <Filter>States\Editor\Plugins</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

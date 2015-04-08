@@ -1,0 +1,14 @@
+[Mon Apr 06 14:11:48 2015] INFO: Opened log file Urho3D.log
+[Mon Apr 06 14:11:48 2015] INFO: Created 3 worker threads
+[Mon Apr 06 14:11:48 2015] INFO: Added resource path C:/Users/skauf1/Documents/GitHub/Prime/Prime/Data/CoreData/
+[Mon Apr 06 14:11:48 2015] INFO: Added resource path C:/Users/skauf1/Documents/GitHub/Prime/Prime/Data/Data/
+[Mon Apr 06 14:11:48 2015] WARNING: Skipped autoload folder Extra as it does not exist
+[Mon Apr 06 14:12:07 2015] INFO: Created Direct3D9 device
+[Mon Apr 06 14:12:07 2015] INFO: Set screen mode 1280x1024 fullscreen
+[Mon Apr 06 14:12:07 2015] INFO: Initialized input
+[Mon Apr 06 14:12:07 2015] INFO: Initialized user interface
+[Mon Apr 06 14:12:07 2015] INFO: Initialized renderer
+[Mon Apr 06 14:12:07 2015] INFO: Set audio mode 44100 Hz stereo interpolated
+[Mon Apr 06 14:12:11 2015] INFO: Compiled script module Scripts/Editor.as
+[Mon Apr 06 14:12:12 2015] INFO: Added resource path C:/Users/skauf1/Documents/GitHub/Projects/Valhalla/Data/Data/
+[Mon Apr 06 14:12:18 2015] INFO: Device lost

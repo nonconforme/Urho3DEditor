@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<material>
+	<technique name="Techniques/Diff.xml" />
+	<texture unit="diffuse" name="Textures/StoneDiffuse.dds" />
+	<parameter name="MatDiffColor" value="0.6 0.6 0.6 1" />
+	<parameter name="MatSpecColor" value="0 0 0 2" />
+</material>

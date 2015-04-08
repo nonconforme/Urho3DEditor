@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Common.h" />
+    <ClInclude Include="src\Editor\EditorState.h" />
+    <ClInclude Include="src\Editor\EditorData.h" />
+    <ClInclude Include="src\Editor\EditorPlugin.h" />
+    <ClInclude Include="src\Editor\EditorSelection.h" />
+    <ClInclude Include="src\Editor\EditorView.h" />
+    <ClInclude Include="src\Editor\EPGame.h" />
+    <ClInclude Include="src\Editor\EPScene2D.h" />
+    <ClInclude Include="src\Editor\EPScene3D.h" />
+    <ClInclude Include="src\Editor\GizmoScene3D.h" />
+    <ClInclude Include="src\Editor\PluginScene3DEditor.h" />
+    <ClInclude Include="src\Editor\ResourceBrowser.h" />
+    <ClInclude Include="src\Editor\TemplateManager.h" />
+    <ClInclude Include="src\Game\DeathZone.h" />
+    <ClInclude Include="src\Game\Events.h" />
+    <ClInclude Include="src\Game\Game.h" />
+    <ClInclude Include="src\Game\Player.h" />
+    <ClInclude Include="src\Game\SpawnPoint.h" />
+    <ClInclude Include="src\InputActionSystem.h" />
+    <ClInclude Include="src\Loading\Loading.h" />
+    <ClInclude Include="src\Menu\Menu.h" />
+    <ClInclude Include="src\Menu\SubState.h" />
+    <ClInclude Include="src\Menu\SubStates\MainMenu.h" />
+    <ClInclude Include="src\Menu\SubStates\PlayGame.h" />
+    <ClInclude Include="src\Menu\SubStates\Settings.h" />
+    <ClInclude Include="src\Platform.h" />
+    <ClInclude Include="src\Root.h" />
+    <ClInclude Include="src\StateEvents.h" />
+    <ClInclude Include="src\StateManager.h" />
+    <ClInclude Include="src\StateObject.h" />
+    <ClInclude Include="src\UI\AttributeContainer.h" />
+    <ClInclude Include="src\UI\AttributeInspector.h" />
+    <ClInclude Include="src\UI\AttributeVariable.h" />
+    <ClInclude Include="src\UI\AttributeVariableEvents.h" />
+    <ClInclude Include="src\UI\DirSelector.h" />
+    <ClInclude Include="src\UI\Helpers.h" />
+    <ClInclude Include="src\UI\HierarchyWindow.h" />
+    <ClInclude Include="src\UI\Macros.h" />
+    <ClInclude Include="src\UI\MenuBarUI.h" />
+    <ClInclude Include="src\UI\MiniToolBarUI.h" />
+    <ClInclude Include="src\UI\ModalWindow.h" />
+    <ClInclude Include="src\UI\ResourcePicker.h" />
+    <ClInclude Include="src\UI\TabWindow.h" />
+    <ClInclude Include="src\UI\ToolBarUI.h" />
+    <ClInclude Include="src\UI\UIGlobals.h" />
+    <ClInclude Include="src\UI\UIUtils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Editor\EditorState.cpp" />
+    <ClCompile Include="src\Editor\EditorData.cpp" />
+    <ClCompile Include="src\Editor\EditorPlugin.cpp" />
+    <ClCompile Include="src\Editor\EditorSelection.cpp" />
+    <ClCompile Include="src\Editor\EditorView.cpp" />
+    <ClCompile Include="src\Editor\EPGame.cpp" />
+    <ClCompile Include="src\Editor\EPScene2D.cpp" />
+    <ClCompile Include="src\Editor\EPScene3D.cpp" />
+    <ClCompile Include="src\Editor\GizmoScene3D.cpp" />
+    <ClCompile Include="src\Editor\PluginScene3DEditor.cpp" />
+    <ClCompile Include="src\Editor\ResourceBrowser.cpp" />
+    <ClCompile Include="src\Game\DeathZone.cpp" />
+    <ClCompile Include="src\Game\Game.cpp" />
+    <ClCompile Include="src\Game\Player.cpp" />
+    <ClCompile Include="src\Game\SpawnPoint.cpp" />
+    <ClCompile Include="src\InputActionSystem.cpp" />
+    <ClCompile Include="src\Loading\Loading.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Menu\Menu.cpp" />
+    <ClCompile Include="src\Menu\SubState.cpp" />
+    <ClCompile Include="src\Menu\SubStates\MainMenu.cpp" />
+    <ClCompile Include="src\Menu\SubStates\PlayGame.cpp" />
+    <ClCompile Include="src\Menu\SubStates\Settings.cpp" />
+    <ClCompile Include="src\Root.cpp" />
+    <ClCompile Include="src\StateManager.cpp" />
+    <ClCompile Include="src\StateObject.cpp" />
+    <ClCompile Include="src\UI\AttributeContainer.cpp" />
+    <ClCompile Include="src\UI\AttributeInspector.cpp" />
+    <ClCompile Include="src\UI\AttributeVariable.cpp" />
+    <ClCompile Include="src\UI\DirSelector.cpp" />
+    <ClCompile Include="src\UI\HierarchyWindow.cpp" />
+    <ClCompile Include="src\UI\MenuBarUI.cpp" />
+    <ClCompile Include="src\UI\MiniToolBarUI.cpp" />
+    <ClCompile Include="src\UI\ModalWindow.cpp" />
+    <ClCompile Include="src\UI\ResourcePicker.cpp" />
+    <ClCompile Include="src\UI\TabWindow.cpp" />
+    <ClCompile Include="src\UI\ToolBarUI.cpp" />
+    <ClCompile Include="src\UI\UIUtils.cpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{CD1D8706-B044-440D-B504-C6346C049C20}</ProjectGuid>
+    <RootNamespace>GameClient</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)_bin\$(Configuration)\bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)_bin\$(Configuration)\bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../Dependencies/Urho3D/Build/include;./src;../../Dependencies/Urho3D/Build/include/Urho3D/ThirdParty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_SECURE_SCL=0;URHO3D_SSE;URHO3D_MINIDUMPS;URHO3D_FILEWATCHER;URHO3D_PROFILING;URHO3D_LOGGING;URHO3D_ANGELSCRIPT;URHO3D_NAVIGATION;URHO3D_NETWORK;URHO3D_PHYSICS;URHO3D_URHO2D;URHO3D_STATIC_DEFINE;_CRT_SECURE_NO_WARNINGS;HAVE_STDINT_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>../../Dependencies/Urho3D/Build/Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Urho3d_d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;winmm.lib;imm32.lib;version.lib;ws2_32.lib;dbghelp.lib;d3d9.lib;d3dcompiler.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>../../Dependencies/Urho3D/Build/include;../../Dependencies/Urho3D/Build/include/Urho3D/ThirdParty;./src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_SECURE_SCL=0;URHO3D_SSE;URHO3D_MINIDUMPS;URHO3D_FILEWATCHER;URHO3D_LOGGING;URHO3D_ANGELSCRIPT;URHO3D_NAVIGATION;URHO3D_NETWORK;URHO3D_PHYSICS;URHO3D_URHO2D;URHO3D_STATIC_DEFINE;_CRT_SECURE_NO_WARNINGS;HAVE_STDINT_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>../../Dependencies/Urho3D/Build/Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Urho3d.lib;winmm.lib;imm32.lib;version.lib;ws2_32.lib;dbghelp.lib;d3d9.lib;d3dcompiler.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

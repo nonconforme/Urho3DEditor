@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<scene id="1">
+	<attribute name="Name" value="" />
+	<attribute name="Time Scale" value="1" />
+	<attribute name="Smoothing Constant" value="50" />
+	<attribute name="Snap Threshold" value="5" />
+	<attribute name="Elapsed Time" value="0" />
+	<attribute name="Next Replicated Node ID" value="12" />
+	<attribute name="Next Replicated Component ID" value="16" />
+	<attribute name="Next Local Node ID" value="16777216" />
+	<attribute name="Next Local Component ID" value="16777216" />
+	<attribute name="Variables" />
+	<attribute name="Variable Names" value="" />
+	<component type="PhysicsWorld" id="1" />
+	<component type="Octree" id="2" />
+	<component type="DebugRenderer" id="3" />
+	<node id="2">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="Zone" />
+		<attribute name="Position" value="0 0 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="Zone" id="4">
+			<attribute name="Bounding Box Min" value="-1000 -1000 -1000" />
+			<attribute name="Bounding Box Max" value="1000 1000 1000" />
+			<attribute name="Ambient Color" value="0.25 0.25 0.25 1" />
+		</component>
+	</node>
+	<node id="3">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="Box02" />
+		<attribute name="Position" value="0 0 -0" />
+		<attribute name="Rotation" value="-3.09086e-008 -3.09086e-008 0.707107 -0.707107" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="StaticModel" id="5">
+			<attribute name="Model" value="Model;Models/Box02.mdl" />
+			<attribute name="Material" value="Material;Materials/_01___Default.xml" />
+		</component>
+		<component type="CollisionShape" id="14">
+			<attribute name="Shape Type" value="TriangleMesh" />
+			<attribute name="Model" value="Model;Models/Box02.mdl" />
+		</component>
+		<component type="RigidBody" id="15">
+			<attribute name="Physics Rotation" value="-3.09086e-008 -3.09086e-008 0.707107 -0.707107" />
+		</component>
+	</node>
+	<node id="4">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="Omni02" />
+		<attribute name="Position" value="0.58117 0.308504 0.630868" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="Light" id="6">
+			<attribute name="Color" value="0.5 0.5 0.5 1" />
+			<attribute name="Light Shape Texture" value="TextureCube;" />
+		</component>
+	</node>
+	<node id="5">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="Omni06" />
+		<attribute name="Position" value="-0.578833 0.308504 0.630868" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="Light" id="7">
+			<attribute name="Color" value="0.5 0.5 0.5 1" />
+			<attribute name="Light Shape Texture" value="TextureCube;" />
+		</component>
+	</node>
+	<node id="6">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="Omni11" />
+		<attribute name="Position" value="0.58117 0.308504 -0.622494" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="Light" id="8">
+			<attribute name="Color" value="0.5 0.5 0.5 1" />
+			<attribute name="Light Shape Texture" value="TextureCube;" />
+		</component>
+	</node>
+	<node id="7">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="Omni20" />
+		<attribute name="Position" value="-0.578833 0.308504 -0.622494" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="Light" id="9">
+			<attribute name="Color" value="0.5 0.5 0.5 1" />
+			<attribute name="Light Shape Texture" value="TextureCube;" />
+		</component>
+	</node>
+	<node id="8">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="Omni41" />
+		<attribute name="Position" value="-8.49545 -2.02089 8.58429" />
+		<attribute name="Rotation" value="0.829423 -0.383094 -0.365248 -0.17858" />
+		<attribute name="Scale" value="0.1 0.1 0.1" />
+		<attribute name="Variables" />
+		<component type="Light" id="10">
+			<attribute name="Light Type" value="Spot" />
+			<attribute name="Color" value="0.5 0.5 0.5 1" />
+			<attribute name="Brightness Multiplier" value="5" />
+			<attribute name="Spot FOV" value="90" />
+			<attribute name="Cast Shadows" value="true" />
+			<attribute name="Per Vertex" value="true" />
+		</component>
+	</node>
+	<node id="9">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="Omni42" />
+		<attribute name="Position" value="-8.19869 0.308504 -8.196" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="Light" id="11">
+			<attribute name="Color" value="0.5 0.5 0.5 1" />
+			<attribute name="Light Shape Texture" value="TextureCube;" />
+		</component>
+	</node>
+	<node id="10">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="Omni43" />
+		<attribute name="Position" value="8.20116 0.308504 -8.196" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="Light" id="12">
+			<attribute name="Color" value="0.5 0.5 0.5 1" />
+			<attribute name="Light Shape Texture" value="TextureCube;" />
+		</component>
+	</node>
+	<node id="11">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="Omni44" />
+		<attribute name="Position" value="8.20116 0.308504 8.204" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="Light" id="13">
+			<attribute name="Color" value="0.5 0.5 0.5 1" />
+			<attribute name="Light Shape Texture" value="TextureCube;" />
+		</component>
+	</node>
+</scene>
