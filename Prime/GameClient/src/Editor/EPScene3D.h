@@ -211,6 +211,8 @@ namespace Prime
 			virtual void		SetVisible(bool visible) override;
 			virtual void		Update(float timeStep) override;
 
+			bool IsSceneModified() { return sceneModified; }
+
 			// debug handling
 			void ToggleRenderingDebug()	{ renderingDebug = !renderingDebug; }
 			void TogglePhysicsDebug(){ physicsDebug = !physicsDebug; }

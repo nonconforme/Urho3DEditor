@@ -64,6 +64,8 @@ namespace Prime
 
 		EditorData::~EditorData()
 		{
+			if (rootUI_)
+				rootUI_->Remove();
 		}
 
 		void EditorData::RegisterObject(Urho3D::Context* context)

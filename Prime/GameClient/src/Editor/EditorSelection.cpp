@@ -73,8 +73,6 @@ namespace Prime
 			numEditableComponentsPerNode_ = 1;
 		}
 
-
-
 		void EditorSelection::AddSelectedComponent(Urho3D::Component* comp)
 		{
 			if (comp != NULL)
@@ -98,8 +96,6 @@ namespace Prime
 			if (node != NULL)
 				editNodes_.Push(Urho3D::WeakPtr<Urho3D::Node>(node));
 		}
-
-
 
 		void EditorSelection::AddSelectedUIElement(Urho3D::UIElement* element)
 		{
@@ -173,6 +169,15 @@ namespace Prime
 				editUIElements_.Push(Urho3D::WeakPtr<Urho3D::UIElement>(element));
 		}
 
+		void EditorSelection::SetCopiedNodes(Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Node>>& nodes)
+		{
+			_copiedNodes = nodes;
+		}
+
+		void EditorSelection::SetCopiedComponents(Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Component>>& comps)
+		{
+			_copiedComponents = comps;
+		}
 
 		void EditorSelection::SetSelectedNodes(Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Node>>& nodes)
 		{
@@ -202,6 +207,16 @@ namespace Prime
 		void EditorSelection::SetEditUIElements(Urho3D::Vector<Urho3D::WeakPtr<Urho3D::UIElement>>& elements)
 		{
 			editUIElements_ = elements;
+		}
+
+		Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Node>>& EditorSelection::GetCopiedNodes()
+		{
+			return _copiedNodes;
+		}
+
+		Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Component>>& EditorSelection::GetCopiedComponents()
+		{
+			return _copiedComponents;
 		}
 
 		Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Node>>& EditorSelection::GetSelectedNodes()
@@ -238,8 +253,6 @@ namespace Prime
 		{
 			return globalVarNames_[name];
 		}
-
-
 
 		void EditorSelection::OnHierarchyListSelectionChange(const Urho3D::PODVector<Urho3D::UIElement*>& items, const Urho3D::PODVector<unsigned>& indices)
 		{

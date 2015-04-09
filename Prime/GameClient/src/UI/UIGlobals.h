@@ -37,6 +37,10 @@ namespace Prime
 		const Urho3D::StringHash A_UNDO_VAR("UndoAction");
 		const Urho3D::StringHash A_REDO_VAR("RedoAction");
 		const Urho3D::StringHash A_QUITEDITOR_VAR("QuitEditorAction");
+		const Urho3D::StringHash A_EDIT_COPY_VAR("EditCopyVar");
+		const Urho3D::StringHash A_EDIT_PASTE_VAR("EditPasteVar");
+		const Urho3D::StringHash A_EDIT_DELETE_VAR("EditDeleteVar");
+
 		const Urho3D::StringHash A_SHOWATTRIBUTE_VAR("ShowAttributeAction");
 		const Urho3D::StringHash A_SHOWHIERARCHY_VAR("ShowHierarchyAction");
 		const Urho3D::StringHash A_SHOWRESOURCE_VAR("ShowResourceBrowser");

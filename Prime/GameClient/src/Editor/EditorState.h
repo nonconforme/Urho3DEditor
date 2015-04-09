@@ -99,10 +99,6 @@ namespace Prime
 
 		protected: // Event handlers
 
-			void SubscribeToEvents();
-
-			void HandleInputAction(Urho3D::StringHash eventType, Urho3D::VariantMap& eventData);
-
 			/// Handle Menu Bar Events
 			void HandleMenuBarAction(Urho3D::StringHash eventType, Urho3D::VariantMap& eventData);
 			/// Handle Events
@@ -120,6 +116,9 @@ namespace Prime
 			void HandleStatePostEnd(Urho3D::StringHash eventType, Urho3D::VariantMap& eventData);
 			void HandleLoadingUpdate(Urho3D::StringHash eventType, Urho3D::VariantMap& eventData);
 
+			/// messageBox
+			void HandleMessageAcknowledgement(Urho3D::StringHash eventType, Urho3D::VariantMap& eventData);
+
 		private:
 			/// is the editor visible, used for the in game editor
 			bool _visible;
@@ -128,9 +127,10 @@ namespace Prime
 			Urho3D::SharedPtr<Urho3D::UIElement>	_sceneRootUI;
 
 			/// editor plugin handling
-			Urho3D::Vector<EditorPlugin*>	_mainEditorPlugins;
-			EditorPlugin*			_editorPluginMain;
-			EditorPlugin*			_editorPluginOver;
+			Urho3D::Vector<Urho3D::SharedPtr<EditorPlugin>>	_mainEditorPlugins;
+			Urho3D::WeakPtr<EditorPlugin>			_editorPluginMain;
+			Urho3D::WeakPtr<EditorPlugin>			_editorPluginOver;
+			Urho3D::WeakPtr<EditorPlugin> _editorPlugin3D;
 
 			/// ui stuff
 			Urho3D::SharedPtr<Urho3D::UIElement>	_rootUI;

@@ -68,6 +68,8 @@ namespace Prime
 			unsigned GetNumEditComponents();
 			unsigned GetNumEditNodes();
 
+			Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Node>>&		GetCopiedNodes();
+			Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Component>>&	GetCopiedComponents();
 			Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Node>>&		GetSelectedNodes();
 			Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Component>>&	GetSelectedComponents();
 			Urho3D::Vector<Urho3D::WeakPtr<Urho3D::UIElement>>&	GetSelectedUIElements();
@@ -80,6 +82,8 @@ namespace Prime
 
 			void	SetEditNode(Urho3D::Node* node);
 			void	SetEditUIElement(Urho3D::UIElement* element);
+			void	SetCopiedNodes(Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Node>>& nodes);
+			void	SetCopiedComponents(Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Component>>& comps);
 			void	SetSelectedNodes(Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Node>>& nodes);
 			void	SetSelectedComponents(Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Component>>& comps);
 			void	SetSelectedUIElements(Urho3D::Vector<Urho3D::WeakPtr<Urho3D::UIElement>>& elemets);
@@ -93,6 +97,10 @@ namespace Prime
 
 			void OnHierarchyListSelectionChange(const Urho3D::PODVector<Urho3D::UIElement*>& items, const Urho3D::PODVector<unsigned>& indices);
 		protected:
+			/// Copy
+			Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Node>>		_copiedNodes;
+			Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Component>>	_copiedComponents;
+
 			/// Selection
 			Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Node>>		selectedNodes_;
 			Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Component>>	selectedComponents_;

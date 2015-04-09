@@ -71,7 +71,7 @@ namespace Prime
 			_state->SendEvent(E_STATEPOSTEND);
 		}
 
-		StateObject* oldState = static_cast<StateObject*>(_state.Get());
+		Urho3D::SharedPtr<Object> oldState = _state;
 		_state = state;
 
 		if (state) {

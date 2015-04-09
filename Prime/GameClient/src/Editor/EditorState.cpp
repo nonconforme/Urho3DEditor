@@ -69,6 +69,7 @@
 #include <Urho3D/IO/FileSystem.h>
 #include <Urho3D/UI/CheckBox.h>
 #include <Urho3D/UI/FileSelector.h>
+#include <Urho3D/UI/MessageBox.h>
 
 namespace Prime
 {
@@ -86,6 +87,14 @@ namespace Prime
 		}
 		EditorState::~EditorState()
 		{
+			if (_rootUI)
+				_rootUI->Remove();
+
+			//_mainEditorPlugins.Clear();
+			
+			context_->RemoveSubsystem<EditorData>();
+			context_->RemoveSubsystem<EditorView>();
+			context_->RemoveSubsystem<EditorSelection>();
 		}
 
 		void EditorState::RegisterObject(Urho3D::Context* context)
@@ -168,6 +177,11 @@ namespace Prime
 			menubar->CreateMenu("File");
 			menubar->CreateMenuItem("File", "Quit", UI::A_QUITEDITOR_VAR);
 
+			menubar->CreateMenu("Edit");
+			menubar->CreateMenuItem("Edit", "Copy", UI::A_EDIT_COPY_VAR, 'C', Urho3D::QUAL_CTRL);
+			menubar->CreateMenuItem("Edit", "Paste", UI::A_EDIT_PASTE_VAR, 'V', Urho3D::QUAL_CTRL);
+			menubar->CreateMenuItem("Edit", "Delete", UI::A_EDIT_DELETE_VAR, Urho3D::KEY_DELETE);
+
 			SubscribeToEvent(_editorView->GetGetMenuBar(), UI::E_MENUBAR_ACTION, HANDLER(EditorState, HandleMenuBarAction));
 
 			context_->RegisterSubsystem(new EditorSelection(context_, this));
@@ -218,28 +232,14 @@ namespace Prime
 			_editorView->GetRightFrame()->AddTab("Inspector", atrele);
 
 
-			//////////////////////////////////////////////////////////////////////////
-			/// create Resource Browser
+			////////////////////////////////////////////////////////////////////////
+			// create Resource Browser
 
 			//resourceBrowser_ = new ResourceBrowser(context_);
 			//resourceBrowser_->CreateResourceBrowser();
 			//resourceBrowser_->ShowResourceBrowserWindow();
 			SubscribeToEvent(_editorView->GetMiddleFrame(), UI::E_ACTIVETABCHANGED, HANDLER(EditorState, HandleMainEditorTabChanged));
 			SubscribeToEvent(Urho3D::E_UPDATE, HANDLER(EditorState, HandleUpdate));
-
-			InputActionSystem* inputSystem = GetSubsystem<InputActionSystem>();
-			if (inputSystem)
-			{
-				ActionState* editorInputState = new ActionState(context_);
-				editorInputState->SetName("EditorInputState");
-
-				editorInputState->AddInputState(&AS_DELETE);
-
-				inputSystem->RegisterActionState(editorInputState);
-
-				inputSystem->Push("EditorInputState");
-			}
-			SubscribeToEvent(E_INPUTACTION, HANDLER(EditorState, HandleInputAction));
 
 			_editorView->SetToolBarVisible(true);
 			_editorView->SetLeftFrameVisible(true);
@@ -341,7 +341,7 @@ namespace Prime
 			if (plugin->HasMainScreen())
 			{
 				// push fist because tabwindow send tabchanged event on first add and that activates the first plugin.
-				_mainEditorPlugins.Push(plugin);
+				_mainEditorPlugins.Push(Urho3D::SharedPtr<EditorPlugin>(plugin));
 
 				if (plugin->GetFramePosition() == EFP_LEFT)
 				{
@@ -364,14 +364,24 @@ namespace Prime
 			if (plugin->HasMainScreen())
 			{
 				_editorView->GetMiddleFrame()->RemoveTab(plugin->GetName());
-				_mainEditorPlugins.Remove(plugin);
+				for (auto itr = _mainEditorPlugins.Begin(); itr != _mainEditorPlugins.End(); itr++)
+				{
+					if ((*itr).Get() == plugin)
+					{
+						_mainEditorPlugins.Remove(*itr);
+					}
+				}
+				
 			}
 			_editorData->RemoveEditorPlugin(plugin);
 		}
 
 		void EditorState::LoadPlugins()
 		{
-			AddEditorPlugin(new EPScene3D(context_));
+			EPScene3D* plugin = new EPScene3D(context_);
+			AddEditorPlugin(plugin);
+			_editorPlugin3D = plugin;
+
 			AddEditorPlugin(new EPGame(context_));
 			//AddEditorPlugin(new EPScene2D(context_));
 		}
@@ -490,68 +500,6 @@ namespace Prime
 			//RebuildResourceDatabase();
 		}
 
-		void EditorState::SubscribeToEvents()
-		{
-			SubscribeToEvent(Urho3D::E_UPDATE, HANDLER(EditorState, HandleUpdate));
-			SubscribeToEvent(Urho3D::E_POSTUPDATE, HANDLER(EditorState, HandlePostUpdate));
-
-		}
-
-		void EditorState::HandleInputAction(Urho3D::StringHash eventType, Urho3D::VariantMap& eventData)
-		{
-			using namespace InputAction;
-
-			Urho3D::StringHash action = eventData[P_ACTIONID].GetStringHash();
-			bool isdown = eventData[P_ISDOWN].GetBool();
-			Urho3D::Input* input = GetSubsystem<Urho3D::Input>();
-			if (isdown)
-			{
-				if (AS_DELETE.id_ == action)
-				{
-					_hierarchyWindow->DisableLayoutUpdate();
-
-					auto components = _editorSelection->GetSelectedComponents();
-					for (auto itr = components.Begin(); itr != components.End(); itr++)
-					{
-						Urho3D::String typeName = (*itr)->GetTypeName();
-						if (typeName == "Octree" ||
-							typeName == "DebugRenderer" ||
-							typeName == "MaterialCache2D" ||
-							typeName == "DrawableProxy2D")
-							continue;
-
-						(*itr)->Remove();
-					}
-					components.Clear();
-
-					Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Node>> nodePtrs;
-					auto nodes = _editorSelection->GetSelectedNodes();
-					for (auto itr = nodes.Begin(); itr != nodes.End(); itr++)
-					{
-						Urho3D::WeakPtr<Urho3D::Node> node(*itr);
-						nodePtrs.Push(node);
-					}
-					for (auto itr = nodePtrs.Begin(); itr != nodePtrs.End(); itr++)
-					{
-						Urho3D::WeakPtr<Urho3D::Node> node = *itr;
-
-						if (!node || !node->GetParent() || !node->GetScene())
-							continue;
-
-						node->Remove();
-					}
-					nodes.Clear();
-
-					_editorSelection->SetSelectedComponents(components);
-					_editorSelection->SetSelectedNodes(nodes);
-
-					_hierarchyWindow->EnableLayoutUpdate();
-
-					HandleHierarchyListSelectionChange("", GetEventDataMap());
-				}
-			}
-		}
-
 		void EditorState::HandleMenuBarAction(Urho3D::StringHash eventType, Urho3D::VariantMap& eventData)
 		{
 			using namespace UI::MenuBarAction;
@@ -559,12 +507,124 @@ namespace Prime
 			Urho3D::StringHash action = eventData[P_ACTION].GetStringHash();
 			if (action == UI::A_QUITEDITOR_VAR)
 			{
+				EPScene3D* plugin = static_cast<EPScene3D*>(_editorPlugin3D.Get());
+
+				if (plugin && plugin->IsSceneModified())
+				{
+					Urho3D::SharedPtr<Urho3D::MessageBox> messageBox(new Urho3D::MessageBox(context_, "Scene has been modified.\nDo you still want to exit?", "Warning"));
+					messageBox->AddRef();
+					if (messageBox->GetWindow() != NULL)
+					{
+						Urho3D::Button* cancelButton = (Urho3D::Button*)messageBox->GetWindow()->GetChild("CancelButton", true);
+						cancelButton->SetVisible(true);
+						cancelButton->SetFocus(true);
+						SubscribeToEvent(messageBox, Urho3D::E_MESSAGEACK, HANDLER(EditorState, HandleMessageAcknowledgement));
+					}
+				}
+				else
+				{
+					SetState(new Menu::MenuState(context_));
+				}
 			}
 			else if (action == UI::A_SHOWHIERARCHY_VAR)
 			{
 			}
 			else if (action == UI::A_SHOWATTRIBUTE_VAR)
 			{
+			}
+			else if (action == UI::A_EDIT_COPY_VAR)
+			{
+				_editorSelection->SetCopiedNodes(_editorSelection->GetSelectedNodes());
+				_editorSelection->SetCopiedComponents(_editorSelection->GetSelectedComponents());
+			}
+			else if (action == UI::A_EDIT_PASTE_VAR)
+			{
+				auto targetNodes = _editorSelection->GetSelectedNodes();
+
+				if (targetNodes.Size() == 0)
+					return;
+
+				auto components = _editorSelection->GetCopiedComponents();
+				for (auto itr = components.Begin(); itr != components.End(); itr++)
+				{
+					Urho3D::WeakPtr<Urho3D::Component> component = *itr;
+
+					if (!component || !component->GetNode() || !component->GetScene())
+						continue;
+
+					for (auto targetItr = targetNodes.Begin(); targetItr != targetNodes.End(); targetItr++)
+					{
+						Urho3D::WeakPtr<Urho3D::Node> target = *targetItr;
+
+						if (!target)
+							continue;
+
+						target->CloneComponent(component);
+					}
+				}
+
+				auto nodes = _editorSelection->GetCopiedNodes();
+				for (auto itr = nodes.Begin(); itr != nodes.End(); itr++)
+				{
+					Urho3D::WeakPtr<Urho3D::Node> node = *itr;
+
+					if (!node || !node->GetParent() || !node->GetScene())
+						continue;
+
+					for (auto targetItr = targetNodes.Begin(); targetItr != targetNodes.End(); targetItr++)
+					{
+						Urho3D::WeakPtr<Urho3D::Node> target = *targetItr;
+
+						if (!target)
+							continue;
+
+						target->AddChild(node->Clone());
+					}
+				}
+			}
+			else if (action == UI::A_EDIT_DELETE_VAR)
+			{
+				_hierarchyWindow->DisableLayoutUpdate();
+
+				auto components = _editorSelection->GetSelectedComponents();
+				for (auto itr = components.Begin(); itr != components.End(); itr++)
+				{
+					Urho3D::String typeName = (*itr)->GetTypeName();
+					if (typeName == "Octree" ||
+						typeName == "DebugRenderer" ||
+						typeName == "MaterialCache2D" ||
+						typeName == "DrawableProxy2D")
+						continue;
+
+					(*itr)->Remove();
+				}
+				components.Clear();
+
+				//Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Node>> nodePtrs;
+				//auto nodes = _editorSelection->GetSelectedNodes();
+				//for (auto itr = nodes.Begin(); itr != nodes.End(); itr++)
+				//{
+				//	Urho3D::WeakPtr<Urho3D::Node> node(*itr);
+				//	nodePtrs.Push(node);
+				//}
+				auto nodes = _editorSelection->GetSelectedNodes();
+				for (auto itr = nodes.Begin(); itr != nodes.End(); itr++)
+				{
+					Urho3D::WeakPtr<Urho3D::Node> node = *itr;
+
+					if (!node || !node->GetParent() || !node->GetScene())
+						continue;
+
+					node->Remove();
+				}
+				nodes.Clear();
+
+				_editorSelection->SetSelectedComponents(components);
+				_editorSelection->SetSelectedNodes(nodes);
+
+				_hierarchyWindow->EnableLayoutUpdate();
+
+				HandleHierarchyListSelectionChange("", GetEventDataMap());
 			}
 		}
 
@@ -643,7 +703,6 @@ namespace Prime
 		void EditorState::HandleStatePreStart(Urho3D::StringHash eventType, Urho3D::VariantMap& eventData)
 		{
 			CreateEditor();
-			//SubscribeToEvents();
 			PostLoadingComplete();
 		}
 
@@ -665,6 +724,16 @@ namespace Prime
 		void EditorState::HandleLoadingUpdate(Urho3D::StringHash eventType, Urho3D::VariantMap& eventData)
 		{
 
+		}
+
+		void EditorState::HandleMessageAcknowledgement(Urho3D::StringHash eventType, Urho3D::VariantMap& eventData)
+		{
+			using namespace Urho3D::MessageACK;
+
+			if (eventData[P_OK].GetBool())
+			{
+				SetState(new Menu::MenuState(context_));
+			}
 		}
 	}
 }

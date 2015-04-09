@@ -186,6 +186,7 @@ namespace Prime
 			resourcePickers.Push(new ResourcePicker("LuaFile", luaFileFilters));
 			resourcePickers.Push(new ResourcePicker("Material", materialFilters, ACTION_PICK | ACTION_OPEN | ACTION_EDIT));
 			resourcePickers.Push(new ResourcePicker("Model", "*.mdl", ACTION_PICK | ACTION_EDIT));
+			resourcePickers.Push(new ResourcePicker("ParticleEffect", "*.xml", ACTION_PICK | ACTION_OPEN));
 			resourcePickers.Push(new ResourcePicker("ScriptFile", scriptFilters));
 			resourcePickers.Push(new ResourcePicker("Sound", soundFilters));
 			resourcePickers.Push(new ResourcePicker("Technique", "*.xml"));

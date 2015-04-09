@@ -81,7 +81,7 @@ namespace Prime
 			Urho3D::Graphics* graphics_;
 			Urho3D::UI* ui_;
 
-			Urho3D::SharedPtr<Urho3D::UIElement> uiRoot_;
+			Urho3D::WeakPtr<Urho3D::UIElement> uiRoot_;
 			Urho3D::SharedPtr<UI::MenuBarUI> menubar_;
 			Urho3D::SharedPtr<UI::ToolBarUI> toolbar_;
 			Urho3D::SharedPtr<UI::MiniToolBarUI> miniToolbar_;

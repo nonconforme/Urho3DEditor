@@ -156,6 +156,9 @@ namespace Prime
 
 			attributes_.Resize(serializable->GetNumAttributes());
 
+			if (serializable->GetTypeName() == "ParticleEmitter")
+				attributes_.Resize(serializable->GetNumAttributes());
+
 			for (unsigned int i = 0; i < serializable->GetNumAttributes(); ++i)
 			{
 				Urho3D::AttributeInfo info = serializable->GetAttributes()->At(i);
@@ -315,7 +318,10 @@ namespace Prime
 				ResourcePicker* picker = editorResourcePicker_->GetResourcePicker(resourceType);
 
 				if (!picker)
+				{
+					LOGERROR("No resource picker for type " + Urho3D::String(resourceType));
 					return NULL;
+				}
 
 				ResourceRefAttributeUI* attr = ResourceRefAttributeUI::Create(serializable, info.name_, attrInfo.type_,
 					resourceType, index, subIndex, attributeList_->GetDefaultStyle(), picker->actions);
