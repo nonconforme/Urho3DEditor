@@ -524,13 +524,21 @@ namespace Prime
 					}
 					components.Clear();
 
+					Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Node>> nodePtrs;
 					auto nodes = _editorSelection->GetSelectedNodes();
 					for (auto itr = nodes.Begin(); itr != nodes.End(); itr++)
 					{
-						if ((*itr) == _scene)
+						Urho3D::WeakPtr<Urho3D::Node> node(*itr);
+						nodePtrs.Push(node);
+					}
+					for (auto itr = nodePtrs.Begin(); itr != nodePtrs.End(); itr++)
+					{
+						Urho3D::WeakPtr<Urho3D::Node> node = *itr;
+
+						if (!node || !node->GetParent() || !node->GetScene())
 							continue;
 
-						(*itr)->Remove();
+						node->Remove();
 					}
 					nodes.Clear();
 

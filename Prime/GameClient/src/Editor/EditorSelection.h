@@ -68,24 +68,24 @@ namespace Prime
 			unsigned GetNumEditComponents();
 			unsigned GetNumEditNodes();
 
-			Urho3D::Vector<Urho3D::Node*>&		GetSelectedNodes();
-			Urho3D::Vector<Urho3D::Component*>&	GetSelectedComponents();
-			Urho3D::Vector<Urho3D::UIElement*>&	GetSelectedUIElements();
-			Urho3D::Vector<Urho3D::Node*>&		GetEditNodes();
-			Urho3D::Vector<Urho3D::Component*>&	GetEditComponents();
+			Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Node>>&		GetSelectedNodes();
+			Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Component>>&	GetSelectedComponents();
+			Urho3D::Vector<Urho3D::WeakPtr<Urho3D::UIElement>>&	GetSelectedUIElements();
+			Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Node>>&		GetEditNodes();
+			Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Component>>&	GetEditComponents();
 			Urho3D::UIElement*			GetEditUIElement();
-			Urho3D::Vector<Urho3D::UIElement*>	GetEditUIElements();
+			Urho3D::Vector<Urho3D::WeakPtr<Urho3D::UIElement>>	GetEditUIElements();
 			Urho3D::Node*				GetEditNode();
 			unsigned int		GetNumEditableComponentsPerNode();
 
 			void	SetEditNode(Urho3D::Node* node);
 			void	SetEditUIElement(Urho3D::UIElement* element);
-			void	SetSelectedNodes(Urho3D::Vector<Urho3D::Node*>& nodes);
-			void	SetSelectedComponents(Urho3D::Vector<Urho3D::Component*>& comps);
-			void	SetSelectedUIElements(Urho3D::Vector<Urho3D::UIElement*>& elemets);
-			void	SetEditNodes(Urho3D::Vector<Urho3D::Node*>& nodes);
-			void	SetEditComponents(Urho3D::Vector<Urho3D::Component*>& comps);
-			void	SetEditUIElements(Urho3D::Vector<Urho3D::UIElement*>& elements);
+			void	SetSelectedNodes(Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Node>>& nodes);
+			void	SetSelectedComponents(Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Component>>& comps);
+			void	SetSelectedUIElements(Urho3D::Vector<Urho3D::WeakPtr<Urho3D::UIElement>>& elemets);
+			void	SetEditNodes(Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Node>>& nodes);
+			void	SetEditComponents(Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Component>>& comps);
+			void	SetEditUIElements(Urho3D::Vector<Urho3D::WeakPtr<Urho3D::UIElement>>& elements);
 			void	SetNumEditableComponentsPerNode(unsigned int num);
 
 			void			SetGlobalVarNames(const Urho3D::String& name);
@@ -94,16 +94,16 @@ namespace Prime
 			void OnHierarchyListSelectionChange(const Urho3D::PODVector<Urho3D::UIElement*>& items, const Urho3D::PODVector<unsigned>& indices);
 		protected:
 			/// Selection
-			Urho3D::Vector<Urho3D::Node*>		selectedNodes_;
-			Urho3D::Vector<Urho3D::Component*>	selectedComponents_;
-			Urho3D::Vector<Urho3D::UIElement*>	selectedUIElements_;
+			Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Node>>		selectedNodes_;
+			Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Component>>	selectedComponents_;
+			Urho3D::Vector<Urho3D::WeakPtr<Urho3D::UIElement>>	selectedUIElements_;
 
 			Urho3D::UIElement*	editUIElement_;
 			Urho3D::Node*		editNode_;
 			EditorState* editor_;
-			Urho3D::Vector<Urho3D::Node*>		editNodes_;
-			Urho3D::Vector<Urho3D::Component*>	editComponents_;
-			Urho3D::Vector<Urho3D::UIElement*>	editUIElements_;
+			Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Node>>		editNodes_;
+			Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Component>>	editComponents_;
+			Urho3D::Vector<Urho3D::WeakPtr<Urho3D::UIElement>>	editUIElements_;
 
 			unsigned int numEditableComponentsPerNode_;
 

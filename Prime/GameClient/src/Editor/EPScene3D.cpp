@@ -764,7 +764,7 @@ namespace Prime
 
 			for (unsigned int i = 0; i < editorSelection_->GetNumSelectedComponents(); ++i)
 			{
-				Urho3D::Drawable* drawable = dynamic_cast<Urho3D::Drawable*>(editorSelection_->GetSelectedComponents()[i]);
+				Urho3D::Drawable* drawable = dynamic_cast<Urho3D::Drawable*>(editorSelection_->GetSelectedComponents()[i].Get());
 				count++;
 				if (drawable != NULL)
 					centerPoint += drawable->GetNode()->LocalToWorld(drawable->GetBoundingBox().Center());

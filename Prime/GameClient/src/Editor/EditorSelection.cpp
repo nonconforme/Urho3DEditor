@@ -78,25 +78,25 @@ namespace Prime
 		void EditorSelection::AddSelectedComponent(Urho3D::Component* comp)
 		{
 			if (comp != NULL)
-				selectedComponents_.Push(comp);
+				selectedComponents_.Push(Urho3D::WeakPtr<Urho3D::Component>(comp));
 		}
 
 		void EditorSelection::AddSelectedNode(Urho3D::Node* node)
 		{
 			if (node != NULL)
-				selectedNodes_.Push(node);
+				selectedNodes_.Push(Urho3D::WeakPtr<Urho3D::Node>(node));
 		}
 
 		void EditorSelection::AddEditComponent(Urho3D::Component* comp)
 		{
 			if (comp != NULL)
-				editComponents_.Push(comp);
+				editComponents_.Push(Urho3D::WeakPtr<Urho3D::Component>(comp));
 		}
 
 		void EditorSelection::AddEditNode(Urho3D::Node* node)
 		{
 			if (node != NULL)
-				editNodes_.Push(node);
+				editNodes_.Push(Urho3D::WeakPtr<Urho3D::Node>(node));
 		}
 
 
@@ -104,7 +104,7 @@ namespace Prime
 		void EditorSelection::AddSelectedUIElement(Urho3D::UIElement* element)
 		{
 			if (element != NULL)
-				selectedUIElements_.Push(element);
+				selectedUIElements_.Push(Urho3D::WeakPtr<Urho3D::UIElement>(element));
 		}
 
 		unsigned EditorSelection::GetNumSelectedUIElements()
@@ -152,7 +152,7 @@ namespace Prime
 			return editUIElement_;
 		}
 
-		Urho3D::Vector<Urho3D::UIElement*> EditorSelection::GetEditUIElements()
+		Urho3D::Vector<Urho3D::WeakPtr<Urho3D::UIElement>> EditorSelection::GetEditUIElements()
 		{
 			return editUIElements_;
 		}
@@ -170,61 +170,61 @@ namespace Prime
 		void EditorSelection::AddEditUIElement(Urho3D::UIElement* element)
 		{
 			if (element != NULL)
-				editUIElements_.Push(element);
+				editUIElements_.Push(Urho3D::WeakPtr<Urho3D::UIElement>(element));
 		}
 
 
-		void EditorSelection::SetSelectedNodes(Urho3D::Vector<Urho3D::Node*>& nodes)
+		void EditorSelection::SetSelectedNodes(Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Node>>& nodes)
 		{
 			selectedNodes_ = nodes;
 		}
 
-		void EditorSelection::SetSelectedComponents(Urho3D::Vector<Urho3D::Component*>& comps)
+		void EditorSelection::SetSelectedComponents(Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Component>>& comps)
 		{
 			selectedComponents_ = comps;
 		}
 
-		void EditorSelection::SetSelectedUIElements(Urho3D::Vector<Urho3D::UIElement*>& elemets)
+		void EditorSelection::SetSelectedUIElements(Urho3D::Vector<Urho3D::WeakPtr<Urho3D::UIElement>>& elemets)
 		{
 			selectedUIElements_ = elemets;
 		}
 
-		void EditorSelection::SetEditNodes(Urho3D::Vector<Urho3D::Node*>& nodes)
+		void EditorSelection::SetEditNodes(Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Node>>& nodes)
 		{
 			editNodes_ = nodes;
 		}
 
-		void EditorSelection::SetEditComponents(Urho3D::Vector<Urho3D::Component*>& comps)
+		void EditorSelection::SetEditComponents(Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Component>>& comps)
 		{
 			editComponents_ = comps;
 		}
 
-		void EditorSelection::SetEditUIElements(Urho3D::Vector<Urho3D::UIElement*>& elements)
+		void EditorSelection::SetEditUIElements(Urho3D::Vector<Urho3D::WeakPtr<Urho3D::UIElement>>& elements)
 		{
 			editUIElements_ = elements;
 		}
 
-		Urho3D::Vector<Urho3D::Node*>& EditorSelection::GetSelectedNodes()
+		Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Node>>& EditorSelection::GetSelectedNodes()
 		{
 			return selectedNodes_;
 		}
 
-		Urho3D::Vector<Urho3D::Component*>& EditorSelection::GetSelectedComponents()
+		Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Component>>& EditorSelection::GetSelectedComponents()
 		{
 			return selectedComponents_;
 		}
 
-		Urho3D::Vector<Urho3D::UIElement*>& EditorSelection::GetSelectedUIElements()
+		Urho3D::Vector<Urho3D::WeakPtr<Urho3D::UIElement>>& EditorSelection::GetSelectedUIElements()
 		{
 			return selectedUIElements_;
 		}
 
-		Urho3D::Vector<Urho3D::Node*>& EditorSelection::GetEditNodes()
+		Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Node>>& EditorSelection::GetEditNodes()
 		{
 			return editNodes_;
 		}
 
-		Urho3D::Vector<Urho3D::Component*>& EditorSelection::GetEditComponents()
+		Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Component>>& EditorSelection::GetEditComponents()
 		{
 			return editComponents_;
 		}

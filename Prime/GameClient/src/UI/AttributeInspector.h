@@ -81,9 +81,9 @@ namespace Prime
 			void DisableAllContainers();
 
 			Urho3D::Window*				GetAttributewindow();
-			Urho3D::Vector<Urho3D::Node*>&		GetEditNodes();
-			Urho3D::Vector<Urho3D::Component*>& GetEditComponents();
-			Urho3D::Vector<Urho3D::UIElement*>&	GetEditUIElements();
+			Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Node>>&		GetEditNodes();
+			Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Component>>& GetEditComponents();
+			Urho3D::Vector<Urho3D::WeakPtr<Urho3D::UIElement>>&	GetEditUIElements();
 		protected:
 			/// Get node container in the inspector list, create the container if it is not yet available.
 			AttributeContainer* CreateNodeContainer(Urho3D::Serializable* serializable);
@@ -153,9 +153,9 @@ namespace Prime
 			/// cached Attribute Containers for different component Types
 			Urho3D::HashMap< Urho3D::StringHash, Urho3D::SharedPtr<AttributeContainer> > componentContainers_;
 
-			Urho3D::Vector<Urho3D::Node*>		editNodes_;
-			Urho3D::Vector<Urho3D::Component*>	editComponents_;
-			Urho3D::Vector<Urho3D::UIElement*>	editUIElements_;
+			Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Node>>		editNodes_;
+			Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Component>>	editComponents_;
+			Urho3D::Vector<Urho3D::WeakPtr<Urho3D::UIElement>>	editUIElements_;
 
 			Urho3D::SharedPtr<Urho3D::FileSelector> uiFileSelector_;
 		};

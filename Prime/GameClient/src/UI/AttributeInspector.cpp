@@ -423,17 +423,17 @@ namespace Prime
 
 		}
 
-		Urho3D::Vector<Urho3D::Node*>& AttributeInspector::GetEditNodes()
+		Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Node>>& AttributeInspector::GetEditNodes()
 		{
 			return editNodes_;
 		}
 
-		Urho3D::Vector<Urho3D::Component*>& AttributeInspector::GetEditComponents()
+		Urho3D::Vector<Urho3D::WeakPtr<Urho3D::Component>>& AttributeInspector::GetEditComponents()
 		{
 			return editComponents_;
 		}
 
-		Urho3D::Vector<Urho3D::UIElement*>& AttributeInspector::GetEditUIElements()
+		Urho3D::Vector<Urho3D::WeakPtr<Urho3D::UIElement>>& AttributeInspector::GetEditUIElements()
 		{
 			return editUIElements_;
 		}

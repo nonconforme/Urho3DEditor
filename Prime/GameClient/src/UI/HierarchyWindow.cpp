@@ -176,15 +176,71 @@ namespace Prime
 		{
 			using namespace Urho3D::DragDropTest;
 
-			// 		UIElement* source = dynamic_cast<UIElement*>(eventData[P_SOURCE].GetPtr());
-			// 		UIElement* target = dynamic_cast<UIElement*>(eventData[P_TARGET].GetPtr());
-			// 		int itemType;
-			// 		eventData[P_ACCEPT] = TestDragDrop(source, target, itemType);
+			UIElement* source = static_cast<UIElement*>(eventData[P_SOURCE].GetPtr());
+			UIElement* target = static_cast<UIElement*>(eventData[P_TARGET].GetPtr());
+
+			int targetType = target->GetVar(TYPE_VAR).GetInt();
+
+			if (targetType == ITEM_NODE)
+			{
+				eventData[P_ACCEPT] = false;
+				return;
+			}
+				
+			eventData[P_ACCEPT] = true;
+			//eventData[P_ACCEPT] = TestDragDrop(source, target, itemType);
 		}
 
 		void HierarchyWindow::HandleDragDropFinish(Urho3D::StringHash eventType, Urho3D::VariantMap& eventData)
 		{
 			using namespace Urho3D::DragDropFinish;
+
+			UIElement* source = static_cast<UIElement*>(eventData[P_SOURCE].GetPtr());
+			UIElement* target = static_cast<UIElement*>(eventData[P_TARGET].GetPtr());
+
+			int sourceType = source->GetVar(TYPE_VAR).GetInt();
+			int targetType = target->GetVar(TYPE_VAR).GetInt();
+
+			if (targetType != ITEM_NODE)
+			{
+				eventData[P_ACCEPT] = false;
+				return;
+			}
+			
+			unsigned int targetNodeID = target->GetVar(NODE_ID_VAR).GetUInt();
+			Urho3D::Node* targetNode = scene_->GetNode(targetNodeID);
+
+			// No valid target, so don't move anything
+			if (!targetNode)
+				return;
+
+			if (sourceType == ITEM_NODE)
+			{
+				unsigned int sourceNodeID = source->GetVar(NODE_ID_VAR).GetUInt();
+				Urho3D::Node* sourceNode = scene_->GetNode(sourceNodeID);
+
+				// No valid source, so don't move anything
+				if (!sourceNode)
+					return;
+
+				targetNode->AddChild(sourceNode);
+			}
+			else if (sourceType == ITEM_COMPONENT)
+			{
+				unsigned int sourceComponentID = source->GetVar(COMPONENT_ID_VAR).GetUInt();
+				Urho3D::Component* sourceComponent = scene_->GetComponent(sourceComponentID);
+
+				// No valid source, so don't move anything
+				if (!sourceComponent)
+					return;
+
+				targetNode->CloneComponent(sourceComponent);
+
+				UpdateHierarchyItem(sourceComponent, true);
+				sourceComponent->Remove();
+			}
+
+			eventData[P_ACCEPT] = true;
 		}
 
 		void HierarchyWindow::HandleTemporaryChanged(Urho3D::StringHash eventType, Urho3D::VariantMap& eventData)
